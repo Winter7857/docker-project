@@ -1,0 +1,10 @@
+{
+    "name": "plugin-service",
+    "version": "1.0.0",
+    "main": "plugin.js",
+    "dependencies": {
+      "@grpc/grpc-js": "^1.6.8",
+      "@grpc/proto-loader": "^0.7.5"
+    }
+  }
+  

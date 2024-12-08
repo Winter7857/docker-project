@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service ClickerPluginService {
+  rpc IncrementByPlugin (ClickerRequest) returns (ClickerResponse);
+}
+
+message ClickerRequest {
+  int32 value = 1; // Input value for the clicker
+}
+
+message ClickerResponse {
+  int32 result = 1; // Resulting value after the plugin logic
+}
