@@ -45,6 +45,22 @@ CMD ["npm", "run", "dev"]
 # USER nginx
 # EXPOSE 3000
 # CMD ["nginx", "-g", "daemon off;"]
-# Build stage
+
+
+# # Use Node.js 18 or a higher compatible version for Next.js
+# FROM node:18-alpine AS build
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+# RUN npm run build
+
+# # Stage 2: Serve the app with Nginx
+# FROM nginx:stable-bullseye
+# COPY --from=build /app/.next /usr/share/nginx/html
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# EXPOSE 3000
+# CMD ["nginx", "-g", "daemon off;"]
+
 
 
