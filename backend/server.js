@@ -222,7 +222,10 @@ app.post("/api/plugin-toggle", (req, res) => {
 app.get("/api/plugin-status", (req, res) => {
   res.json({ pluginEnabled });
 });
-
+// New route for /api/ to respond with a simple message
+app.get('/api/', (req, res) => {
+  res.send('API is running');
+});
 // Start the Express server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
