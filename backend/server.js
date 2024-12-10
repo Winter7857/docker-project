@@ -118,6 +118,24 @@ app.get('/api/', (req, res) => {
 const amqp = require('amqplib');
 
 
+// Route to reset the counter
+app.post("/api/counter/reset", (req, res) => {
+  const query = "UPDATE counter SET value = 0 WHERE id = 1";
+  db.query(query, (err) => {
+    if (err) {
+      console.error("Error resetting counter:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    db.query("SELECT value FROM counter WHERE id = 1", (err, results) => {
+      if (err) {
+        console.error("Error fetching updated counter:", err);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.json({ count: results[0].value });
+    });
+  });
+});
 
 
 // Start the Express server
